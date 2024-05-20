@@ -1,0 +1,90 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Boy</title>
+    <link rel="stylesheet" href="RegisterBoy.css">
+</head>
+
+
+
+  <style>
+    /* Крестик */
+    .close-button {
+      background-image: url("C:/Users/kxz/Desktop/Work/Closed.png"); /* Путь к вашей фотографии */
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: 251px;
+      top: 18px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    body {
+        overflow-y: hidden; /* Предотвращает прокрутку по вертикали */
+    }
+  </style>
+    <!-- Задний фон -->
+    <div class="background-image2"></div>
+  }
+ <!-- Окно регистрации Пользователя -->
+ <div class="new-image2"></div>
+  <!-- Поле ввода текста -->
+     <input class="input-text" type="text" placeholder="">
+  <!-- Поле ввода пароля -->
+    <input class="input-password" type="password" placeholder="">
+  <!-- Поле подтверждения пароля -->
+    <input class="input-confirm-password" type="password" placeholder="">
+  <!-- Поле ввода email -->
+     <input class="input-Email" type="text" placeholder="">
+ <div class="new-image-on-image">
+  <!-- Boy -->
+  <div class="new-text-on-image3">
+    <h1>Boy</h1>
+  </div>
+  <!-- girl -->
+<div class="new-text-on-image4" id="Girl" onclick="location.href='RegistrationGirl.html';">
+     <h1>Girl</h1>
+</div>
+<div class="new-image-on-image1">
+<div Class="new-images22"></div>
+<div class="new-image-on-image3">
+        <script>
+            // Получаем элементы изображений
+            const image3 = document.querySelector('.new-image-on-image3');
+            const image22 = document.querySelector('.new-images22');
+            image3.addEventListener('click', () => {
+            image22.style.display = 'block';
+    });
+    </script>
+<div Class="new-image-on-image20"></div>
+    <div class="new-text-on-image15" id="Confirm Registration" onclick="location.href='Street.html';">
+     <h1>Confirm Registration</h1>
+    </div>
+<div class="new-image-on-image2">
+    <script>
+        const image2 = document.querySelector('.new-image-on-image2');
+        const image20 = document.querySelector('.new-image-on-image20');
+        image2.addEventListener('click', () => {
+            image20.style.display = 'block';
+    });
+    </script>
+</div>
+<div Class="new-image21"></div>
+    <div class="new-text-on-image15" id="Confirm Registration" onclick="location.href='Street.html';">
+     <h1>Confirm Registration</h1>
+    </div>
+<div class="new-image-on-image4">
+    <script>
+            // Получаем элементы изображений
+            const image4 = document.querySelector('.new-image-on-image4');
+            const image21 = document.querySelector('.new-image21');
+            image4.addEventListener('click', () => {
+            image21.style.display = 'block';
+    });
+    </script>
+</div>
+<div class="new-text-on-image14" id="Back" onclick="location.href='RegistrationBoy.html';">
+     <h1>Back</h1>
+</div>
+</body>
+</html>
