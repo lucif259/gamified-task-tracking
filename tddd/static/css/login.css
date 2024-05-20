@@ -1,0 +1,77 @@
+
+
+.section--auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4F5F4;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+}
+
+.form-title{
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #4448DA;
+    padding: 15px;
+}
+
+
+.field input::placeholder{
+    padding: 12px 20px;
+    max-height: 36px;
+    background: #f4f5f4;
+    border-color: #B4B4B4;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+
+.field input {
+   padding: 12px 20px;
+    max-height: 36px;
+    font-size: 18px;
+    background: #f4f5f4;
+    border-color: #B4B4B4;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+.field label{
+    font-family: 'Roboto';
+    display: flex;
+    align-items: center;
+    padding:  5px;
+    margin-left: 0px;
+    font-family: Inter;
+    font-size: 20px;
+    color: #3F3F3F;
+
+}
+
+.button-submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10px;
+    padding: 16px 32px;
+    background: #4448DA;
+    border-radius: 8px;
+    border-color: #4448DA;
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 20px;
+
+}
+
+.signup{
+    margin-top: 20px;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #3F3F3F;
+
+}

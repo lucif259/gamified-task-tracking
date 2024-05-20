@@ -1,0 +1,169 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock title %}
+
+{% block content %}
+
+
+    <header class="header">
+        <span class="header__logo">Todosya</span>
+        <div class="header__burger">
+            <img src="{% static 'images/icons/burger-icon.svg' %}" alt="burger-button">
+        </div>
+        <nav class="header__menu" aria-label="Header menu">
+
+            <div class="menu__profile">
+                <a class="menu__profile__item" href="{% url 'account_logout' %}">Выйти</a>
+                <img class="menu__profile__item"
+                     src="{% static 'images/icons/bell-icon.svg' %}"
+                     alt="bell-icon">
+                <img class="menu__profile__item"
+                     src="{% static 'images/icons/profile-icon.svg' %}"
+                     alt="profile-icon">
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="main__header">
+            <div class="main__header__options">
+                <button class="main__header__option__btn">Список</button>
+
+            </div>
+            <form method="POST" class="main__header__add-field">
+                {% csrf_token %}
+                <input type="text" name="target" value="create" hidden="hidden" class="hide">
+                <input class="add-field__text"
+                       type="text"
+                       placeholder="Введите текст"
+                       name="title"
+                >
+                <button class="add-field__btn">
+                    <span class="add-field__item">Добавить</span>
+                    <img class="add-field__item"
+                         src="{% static 'images/icons/plus-icon.svg' %}"
+                         alt="plus-icon"/>
+                </button>
+            </form>
+        </div>
+        <div class="todo-list">
+
+            {% for task in tasks %}
+                <form method="POST" class="todo-item" id="task">
+                    {% csrf_token %}
+                    <input type="text" name="target" value="update" hidden="hidden" class="hide">
+                    <input type="text" name="id" value="{{ task.id }}" hidden="hidden" class="hide">
+
+                    <span id="title">{{ task.title }}</span>
+
+                    <div class="todo-item__icons">
+                        <img class="todo-item__icon trash-icon"
+                             id="delete"
+                             src="{% static 'images/icons/trash-icon.svg' %}"
+                             alt="trash-icon">
+                        <img class="todo-item__icon"
+                             id="edit"
+                             src="{% static 'images/icons/edit-icon.svg' %}"
+                             alt="edit-icon">
+                        <img class="todo-item__icon-mobile"
+                             src="{% static 'images/icons/mobile-ellipse.svg' %}"
+                             alt="mobile-ellipse">
+                    </div>
+
+                    <input type="submit" class="in-sky">
+                </form>
+            {% endfor %}
+
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="footer__container footer__container--center">
+                <span class="footer__logo">Todosya</span>
+
+            </div>
+            <div class="footer__rights-block">
+                <span>© 2023 Todosya</span>
+                <div class="rights-block__privacy-container">
+                    <span>Terms & conditions</span>
+                    <span>Privacy Policy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const CookiesStorage = {
+            getCookies() {
+                const cookies = document.cookie
+                    .split('; ')
+                    .map((cookString) => cookString.split('='));
+                let data = {};
+                cookies.forEach((cookie) => {
+                    data = {...data, ...{[cookie[0]]: cookie[1]}};
+                });
+
+                return data;
+            },
+
+            getItem(cookieName) {
+                const data = this.getCookies();
+                return data[cookieName];
+            }
+        }
+
+        const deleteAsync = async (url) => {
+            return await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': CookiesStorage.getItem("csrftoken")
+                },
+
+            })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+        }
+
+
+        const tasks = document.querySelectorAll('#task');
+
+        tasks.forEach(elem => {
+            const edit = elem.querySelector('#edit')
+            const title = elem.querySelector('#title')
+
+            const id = elem.querySelector('input[name="id"]').value
+
+
+            edit.addEventListener('click', () => {
+                title.classList.toggle('hide')
+
+                const changeInput = elem.querySelector('#changeInput')
+                if (changeInput) {
+                    changeInput.remove()
+                } else {
+                    elem.insertAdjacentHTML('afterbegin', `
+                        <input type="text" name="title" id="changeInput" class="add-field__text edit-input" value="${title.textContent}" />
+                    `)
+                    const insertedInput = elem.querySelector('#changeInput')
+
+                    insertedInput?.focus()
+                    insertedInput.selectionStart = insertedInput.value.length
+                }
+            })
+
+            const del = elem.querySelector('#delete')
+
+            del.addEventListener('click', async () => {
+                await deleteAsync(`/tasks/${id}/`, ).then(() => {
+                    window.location.href = '/'
+                })
+            })
+        })
+    </script>
+{% endblock content %}
