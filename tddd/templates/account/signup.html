@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock css %}
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+    <section class="section section--auth">
+
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+
+
+            <h2 class="form-title">Регистрация</h2>
+
+
+            <div class="field">
+                <label class="label">Придумайте имя пользователя</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="error">{{ form.username.errors }}</p>
+                {% endif %}
+            </div>
+
+
+            <div class="field">
+                <label class="label">Придумайте надёжный пароль</label>
+
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <p class="error">{{ form.password1.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+
+                <label class="label">Повторите введённый пароль</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="error">{{ form.password2.errors }}</p>
+                {% endif %}
+            </div>
+
+
+            <button class="button-submit" type="submit">Зарегистрироваться</button>
+        </form>
+    </section>
+
+{% endblock content %}

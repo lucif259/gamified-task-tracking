@@ -1,0 +1,44 @@
+
+{% extends '_base.html' %}
+{% load static %}
+
+ {% block css %}
+<link rel="stylesheet" href="{% static 'css/font/font.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock css %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+    <section class="section section--auth" style="background-image: url('{% static 'images/img.png' %}')">
+        <form method="post" class="form">
+            <h2 class="form-title">Вход в AAAAAAA</h2>
+            {% csrf_token %}
+
+
+             <div class="field">
+                <label class="label">Введите имя пользователя</label>
+                {{ form.login }}
+                 {% if form.login.errors %}
+                    <p class="error">{{ form.login.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">Введите пароль</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <p class="error">{{ form.password.errors }}</p>
+                {% endif %}
+            </div>
+
+            <button class="button-submit" type="submit">Войти</button>
+        </form>
+{#        <a href="{% url 'account_reset_password' %}">Забыли пароль?</a>#}
+        <a class="signup" href="{% url 'account_signup' %}">Регистрация</a>
+    </section>
+
+{% endblock content %}

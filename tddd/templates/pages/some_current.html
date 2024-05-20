@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.title }}</title>
+</head>
+<body>
+<h1>{{ task.title }}</h1>
+
+{% if task.is_complete %}
+    <p>Закончено</p>
+     <form method="POST">
+     {% csrf_token %}
+         <input type="text" name="is_complete" value="False" hidden="hidden">
+        <button>Сбросить</button>
+    </form>
+{% else %}
+    <p>Не закончено</p>
+     <form method="POST">
+     {% csrf_token %}
+         <input type="text" name="is_complete" value="True" hidden="hidden">
+        <button>Выполнить</button>
+    </form>
+{% endif %}
+
+
+</body>
+</html>
