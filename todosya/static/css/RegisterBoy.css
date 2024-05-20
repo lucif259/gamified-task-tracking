@@ -1,0 +1,309 @@
+
+/* Базовые настройки CSS */
+
+/* Сброс стилей браузера */
+
+    {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+/* Шрифты */
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+/* Цвета */
+
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --info-color: #17a2b8;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+
+/* Ширина экрана */
+
+@media only screen and (max-width: 768px) {
+     /* стили для экранов шириной до 768px */
+    }
+
+@media only screen and (min-width: 992px)
+    .container{
+        width: 1000px;
+    }
+
+@media only screen and (min-width: 1025px) {
+    .container{
+         width: 1150px;
+    }
+
+/* Подключение шрифта */
+@font-face {
+  font-family: 'Sunshiney';
+  src: url('C:/Users/kxz/Desktop/font/Sunshiney-Regular.ttf')
+  format('truetype');
+}
+/* Задний фон */
+    .background-image2 {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-image: url("C:/Users/kxz/Desktop/Work/mainfon.png");
+        background-size: cover; /* Scale the background image to cover the whole element */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+    }
+/* Окно регистрации */
+        .new-image2 {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-image: url("C:/Users/kxz/Desktop/Work/Registration.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+        }
+        .input-text {
+            position: absolute;
+            width: 20%; /* Adjust width as needed, using percentage for responsiveness */
+            height: 6vh; /* Adjust height as needed, using viewport height (vh) for responsiveness */
+            left: 44%; /* Adjust the left position based on your layout */
+            top: 12vh; /* Adjust the top position based on your layout */
+            background-color: transparent;
+            border: 0px solid #000; /* Add a border for better visibility */
+            outline: none;
+            font-size: 2.5vw; /* Adjust font size using viewport width (vw) for responsiveness */
+            font-family: 'Sunshiney', serif;
+            color: #000;
+            padding: 10px; /* Add padding for better input field appearance */
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+        }
+                /* Поле ввода текста */
+                    .input-password {
+                        position: absolute;
+                        width: 400px;
+                        height: 44px;
+                        left: 710px;
+                        top: 215px;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        font-size: 38px;
+                        font-family: 'Sunshiney', serif;
+                        color: #000;
+                        padding-left: 10px;
+
+                    }
+                /* Поле подтверждения пароля */
+                    .input-confirm-password {
+                        position: absolute;
+                        width: 400px;
+                        height: 44px;
+                        left: 859px;
+                        top: 295px;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        font-size: 38px;
+                        font-family: 'Sunshiney', serif;
+                        color: #000;
+                        padding-left: 10px;
+                    }
+                /* Поле ввода Email */
+                .input-Email {
+                    position: absolute;
+                    width: 400px;
+                    height: 44px;
+                    left: 790px;
+                    top: 374px;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    font-size: 38px;
+                    font-family: 'Sunshiney', serif;
+                    color: #000;
+                    padding-left: 10px;
+    }
+
+
+/* Аватары героев */
+    .new-image-on-image{
+            position: absolute;
+            width: 30%;
+            height: 100%;
+            left: 35%;
+            top: 21%;
+            background-image: url("C:/Users/kxz/Desktop/Work/fongeroev.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+    }
+/* Person */
+    .new-image-on-image2{
+            position: fixed;
+            width: 8%;
+            height: 20%;
+            left: 36%;
+            top: 61%;
+            background-image: url("C:/Users/kxz/Desktop/Work/boy1.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+    }
+    .new-image-on-image2:active + new-image-on-image20 {
+        display: block;
+    }
+    .new-image-on-image20 {
+            position: fixed;
+            width: 40%;
+            height: 47%;
+            left: 30%;
+            top: 43.1%;
+            background-image: url("C:/Users/kxz/Desktop/Work/windowhero1.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+            z-index: 4;
+            display: none;
+
+    }
+            .new-text-on-image14 {
+       position: fixed;
+       width: 5vw;
+       height: 2vw;
+       left: 37vw;
+       top: 87vh;
+       color: black;
+       font-family: 'Sunshiney', Serif;
+       font-size: 1.2vw;
+       font-weight: 400;
+       line-height: 1.5em;
+       letter-spacing: 0px;
+       text-align: left;
+       cursor: pointer;
+    }
+
+    .new-text-on-image15 {
+       position: fixed;
+       width: 18vw;
+       height: 2vw;
+       left: 46vw;
+       top: 87vh;
+       color: rgb(0,0,0);
+       font-family: 'Sunshiney', Serif;
+       font-size: 1.2vw;
+       font-weight: 400;
+       line-height: 1.5em;
+       letter-spacing: 0px;
+       text-align: left;
+       cursor: pointer;
+    }
+/* Person2 */
+    .new-image-on-image3{
+            position: fixed;
+            width: 8%;
+            height: 20%;
+            left: 46%;
+            top: 60%;
+            cursor: pointer;
+            background-image: url("C:/Users/kxz/Desktop/Work/boy2.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+    }
+        .new-images22 {
+            position: fixed;
+            width: 45%;
+            height: 45%;
+            left: 25%;
+            top: 60%;
+            background-image: url("C:/Users/kxz/Desktop/Work/windowhero2.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+            display: none;
+            z-index: 3;
+    }
+/* Person3 */
+        .new-image-on-image4{
+            position: fixed;
+            width: 8%;
+            height: 20%;
+            left: 55%;
+            top: 61%;
+            background-image: url("C:/Users/kxz/Desktop/Work/boy3.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+    }
+        .new-image21 {
+            position: fixed;
+            width: 40%;
+            height: 40%;
+            left: 15%;
+            top: 60%;
+            background-image: url("C:/Users/kxz/Desktop/Work/windowhero3.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */
+            z-index: 3;
+            display: none;
+
+    }
+ /* Boy */
+   .new-text-on-image3{
+       position: fixed;
+       width: 30vw;
+       height: auto;
+       left: 38vw;
+       top: 48vh;
+       color: rgb(0,0,0);
+       font-family: 'Sunshiney', Serif;
+       font-size: 1.5vw;
+       font-weight: 400;
+       line-height: 1.5em;
+       letter-spacing: 0px;
+       text-align: left;
+       cursor: pointer;
+   }
+ /* ? */
+   .new-image-on-image1{
+            position: fixed;
+            width: 7%;
+            height: 7%;
+            left: 46.5%;
+            top: 54%;
+            background-image: url("C:/Users/kxz/Desktop/Work/vopros.png");
+            background-repeat: no-repeat;
+            background-size: contain; /* Scale the background image to fit within the element */
+            background-position: center; /* Center the background image */;
+   }
+ /* Girl */
+    .new-text-on-image4{
+       position: fixed;
+       width: 30vw;
+       height: auto;
+       left: 57vw;
+       top: 48vh;
+       color: rgb(0,0,0);
+       font-family: 'Sunshiney', Serif;
+       font-size: 1.5vw;
+       font-weight: 400;
+       line-height: 1.5em;
+       letter-spacing: 0px;
+       text-align: left;
+       cursor: pointer;
+    }

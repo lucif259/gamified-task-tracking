@@ -1,0 +1,83 @@
+html
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street</title>
+  <link rel="stylesheet" href="MainMenu.css">
+
+  <style>
+    body {
+        overflow-y: hidden; /* Предотвращает прокрутку по вертикали */
+    }
+
+    /* Крестик */
+    .close-button {
+      background-image: url("C:/Users/kxz/Desktop/Work/Close.png"); /* Путь к вашей фотографии */
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: 251px;
+      top: 18px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+  </style>
+    <!-- Задний фон -->
+    <div class="background-image3"></div>
+<div class="new-image5" id="shop-button" onclick="location.href='Shop.html';">
+     <h1></h1>
+</div>
+<div class="new-image6" id="tasks-button" onclick="location.href='Tasks.html';">
+     <h1></h1>
+</div>
+<div class="new-image7" id="CentralStreet-button" onclick="location.href='CentralStreet.html';">
+     <h1></h1>
+</div>
+    <div class="new-image8"></div>
+    <div class="new-image9"></div>
+
+
+    <div class="new-image-on-image19">
+        <!-- Крестик -->
+        <div class="close-button" onclick="closeWindow()">
+            <img src="close.png" alt="">
+        </div>
+
+        <div class="new-text-on-image10">
+            <h1>Profile</h1>
+        </div>
+        <div class="new-text-on-image11">
+            <h1>Rating</h1>
+        </div>
+        <div class="new-text-on-image12" id="Info" onclick="location.href='Info.html';">
+             <h1>Info</h1>
+        </div>
+        <div class="new-text-on-image13" id="Log Out" onclick="location.href='Login.html';">
+             <h1>Log Out</h1>
+        </div>
+    </div>
+
+<script>
+  // Получаем элементы изображения
+  const image9 = document.querySelector('.new-image9');
+  const image19 = document.querySelector('.new-image-on-image19');
+
+  // Добавляем слушатель событий click к первому изображению
+  image9.addEventListener('click', () => {
+    // Делаем второе изображение видимым
+    image19.style.display = 'block';
+  });
+
+  // Функция закрытия окна
+  function closeWindow() {
+    // Получаем элемент окна
+    const window = document.querySelector('.new-image-on-image19');
+
+    // Устанавливаем окну свойство display в 'none', чтобы скрыть его
+    window.style.display = 'none';
+  }
+</script>
+}
