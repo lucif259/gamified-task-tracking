@@ -44,6 +44,39 @@
             </div>
 
 
+            <div class="field">
+
+                <div class="label">Картинка профиля</div>
+
+                <div class="avatars">
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero1.png" checked>
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero1.png' %}')">
+                        </div>
+                    </label>
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero2.png">
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero2.png' %}')">
+                        </div>
+                    </label>
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero3.png">
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero3.png' %}')">
+                        </div>
+                    </label>
+                </div>
+
+                {% if form.profile_image.errors %}
+                    <p class="error">{{ form.profile_image.errors }}</p>
+                {% endif %}
+            </div>
+
+
+
+
             <button class="button-submit" type="submit">Зарегистрироваться</button>
         </form>
     </section>

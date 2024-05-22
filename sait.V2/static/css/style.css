@@ -423,3 +423,31 @@ button {
     position: absolute;
     z-index: -1;
 }
+
+
+.avatars {
+    display:flex;
+    gap: 10px;
+}
+
+.avatar {
+
+}
+
+.avatar-label {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.avatar input {
+    display: none;
+}
+
+.avatar input:checked ~ .avatar-label {
+    border-color: #000;
+}

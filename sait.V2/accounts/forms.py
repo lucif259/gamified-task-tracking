@@ -16,10 +16,11 @@ class ProfileImageSelectForm(forms.ModelForm):
                 'profile_image': 'Выберите фотографию профиля'
             }
 
+
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('username', )
+        fields = ('username', 'profile_image')
 
 
 class CustomUserChangeForm(UserChangeForm):

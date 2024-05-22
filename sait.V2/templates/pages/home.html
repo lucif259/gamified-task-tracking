@@ -11,7 +11,7 @@
  <img src="{% static 'images/GetBack.png' %}" alt="shop" class="overlay-image3" onclick="location.href='street';" style="position: fixed";>
 <div class="profile-container">
     <div class="profile-header">
-        <img src="{% static 'images/player-avatar.jpg' %}" alt="Player Avatar" class="profile-avatar">
+        <img src="{% static 'images/' %}{{ user.profile_image }}" alt="Player Avatar" class="profile-avatar">
         <h1 class="profile-name">Player name</h1>
         <button class="logout-button"style="font-family: 'Sunshiney'; font-size: 34px;" onclick="location.href='{% url 'account_logout' %}'">Log Out</button>
     </div>
