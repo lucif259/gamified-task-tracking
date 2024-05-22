@@ -1,0 +1,52 @@
+.section--auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4F5F4;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+}
+.overlay-image{
+    position: fixed;
+    width: 6%;
+    height: 6%;
+    left: 10%;
+    top: 55%;
+
+}
+.overlay-image2{
+    position: fixed;
+    width: 5.5%;
+    height: 5.5%;
+    left: 39%;
+    top: 50%;
+}
+.overlay-image3{
+    position: fixed;
+    display: block;
+    width: 7%;
+    height: 6%;
+    left: 69%;
+    top: 39%;
+}
+.overlay-image4{
+    position: fixed;
+    left: 85%;
+    top: 1%;
+}
+.overlay-image5{
+    position: fixed;
+    display: block;
+    width: 2%;
+    height: 3%;
+    left: 83%;
+    top: 3.6%;
+    cursor: pointer;
+}
+.overlay-image6{
+    position: fixed;
+    display: none;
+    left: 67%;
+    top: 3.6%;
+}

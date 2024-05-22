@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/besh.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <section class="section section--auth" style="background-image: url('{% static 'images/street.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+        <img src="{% static 'images/shop.png' %}" alt="shop" class="overlay-image">
+        <img src="{% static 'images/Tasks.png' %}" alt="shop" class="overlay-image2">
+        <img src="{% static 'images/Central.png' %}" alt="shop" class="overlay-image3">
+        <img src="{% static 'images/tab.png' %}" alt="tab" class="overlay-image4">
+        <img src="{% static 'images/bug.png' %}" alt="bug" class="overlay-image5" onclick="toggleOverlayImage()">
+        <img src="{% static 'images/Panelka.png' %}" alt="Panelka" class="overlay-image6" style="display: none;">
+            <script>
+            // Функция для отображения или скрытия overlay-image6
+            function toggleOverlayImage() {
+                var overlayImage6 = document.querySelector('.overlay-image6');
+                // Если overlay-image6 отображается, то скрываем его, иначе показываем
+                overlayImage6.style.display = (overlayImage6.style.display === 'block') ? 'none' : 'block';
+            }
+
+            // Функция для возвращения overlay-image6 в исходное состояние
+            function resetOverlayImage() {
+                var overlayImage6 = document.querySelector('.overlay-image6');
+                // Устанавливаем display: none для overlay-image6
+                overlayImage6.style.display = 'none';
+            }
+        </script>
+    </section>
+{% endblock content %}

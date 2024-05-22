@@ -1,0 +1,57 @@
+.section--auth {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.profile-form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.profile-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2;
+}
+
+.profile-images label {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-images input[type="radio"] {
+    display: none;
+}
+
+.profile-images img {
+    width: 100px; /* Настройте размеры изображений по вашему желанию */
+    height: auto;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-images input[type="radio"]:checked + img {
+    border-color: #000;
+    transform: scale(1.1);
+}
+
+.profile-images img:hover {
+    transform: scale(1.05);
+    border-color: #000;
+}
+
+@media (max-width: 768px) {
+    .profile-images img {
+        width: 80px; /* Измените размеры изображений для меньших устройств */
+    }
+}
