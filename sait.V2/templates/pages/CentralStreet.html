@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Centralstreet.css' %}">
+{% endblock css %}
+
+{% block content %}
+<section class="section section--auth" style="background-image: url('{% static 'images/Centralstreet.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <img src="{% static 'images/TableRating.png' %}" alt="TableRating" class="overlay-image7" onclick="location.href='rating';">
+    <img src="{% static 'images/GetBack.png' %}" alt="GetBack" class="overlay-image8" onclick="location.href='street';">
+
+</section>
+{% endblock content %}

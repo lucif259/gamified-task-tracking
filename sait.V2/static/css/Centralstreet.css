@@ -1,0 +1,26 @@
+.section--auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4F5F4;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+}
+.overlay-image7{
+    position: fixed;
+    width: 8%;
+    height: 6%;
+    left: 45%;
+    top: 55%;
+    cursor: pointer;
+
+}
+.overlay-image8{
+    position: fixed;
+    width: 8%;
+    height: 6%;
+    left: 45%;
+    top: 90%;
+    cursor: pointer;
+}

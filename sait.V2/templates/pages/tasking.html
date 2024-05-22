@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% load static %}
+
+ {% block css %}
+<link rel="stylesheet" href="{% static 'css/Tasking.css' %}">
+    {% endblock css %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+<section class="section section--auth" style="background-image: url('{% static 'images/dialog.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <div class="button-submit" id="Watch" onclick="location.href='{% url 'home' %}';">Watch</div>
+    <div class="button-submit2" id="Go back" onclick="location.href='{% url 'street' %}';">Go back</div>
+</section>
+{% endblock content %}
+

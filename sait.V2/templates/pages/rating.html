@@ -1,0 +1,139 @@
+
+{% extends '_base.html' %}
+
+{% block css %}
+<style>
+    body {
+        background: url('../../static/images/fonprofile.png') no-repeat center center fixed; /* Замените 'your-background-image.jpg' на путь к вашему изображению */
+        background-size: cover; /* Масштабирование изображения для покрытия всей области */
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    .button-submit {
+        text-align: left;
+        position: relative;
+        left: 5%;
+        font-size: 28px;
+        color: black;
+        font-family: 'Sunshiney' , Cursive;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    .section--rating {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: url('media/Window Reg.png') no-repeat center center fixed; /* Замените 'your-background-image.jpg' на путь к вашему изображению */
+        background-size: contain; /* Масштабирование изображения для покрытия всей области */
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .section--rating h1 {
+        text-align: center;
+        font-size: 68px;
+        color: black;
+        font-family: 'Sunshiney' , Cursive;
+        margin-bottom: 20px;
+    }
+
+    .rating-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .rating-table th, .rating-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .rating-table thead {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .rating-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .rating-table tbody tr:hover {
+        background-color: #ddd;
+    }
+
+    .rating-table th {
+        background-color: #E7CAA1;
+        font-size: 18px;
+
+        color: black;
+        font-family: 'Sunshiney' , Cursive;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .rating-table td {
+        border-bottom: 1px solid #E5C8A0;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .rating-table th, .rating-table td {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .rating-table thead {
+            display: none;
+        }
+
+        .rating-table tbody tr {
+            margin-bottom: 15px;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .rating-table tbody tr td {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: none;
+        }
+
+        .rating-table tbody tr td::before {
+            content: attr(data-label);
+            flex-basis: 50%;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
+</style>
+{% endblock css %}
+{% block content %}
+<section class="section section--rating">
+<div class="button-submit" id="Back" onclick="location.href='{% url 'CentralStreet' %}';">Back</div>
+    <table class="rating-table">
+    <h1>Rating Table</h1>
+        <thead>
+            <tr>
+                <th>Место</th>
+                <th>Пользователь</th>
+                <th>Очки</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in rating_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.user.username }}</td>
+                <td>{{ user.rating }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</section>
+{% endblock content %}

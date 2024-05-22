@@ -1,0 +1,108 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+{% endblock css %}
+{% block title %}Главная{% endblock title %}
+
+{% block content %}
+<img src="{% static 'images/fonprofile.png' %}" alt="profilefon" class="background-image"
+     style="position: fixed"; width="120%"; height="100%"; z-index="-1"; align-items="center";>
+ <img src="{% static 'images/GetBack.png' %}" alt="shop" class="overlay-image3" onclick="location.href='street';" style="position: fixed";>
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="{% static 'images/player-avatar.jpg' %}" alt="Player Avatar" class="profile-avatar">
+        <h1 class="profile-name">Player name</h1>
+        <button class="logout-button"style="font-family: 'Sunshiney'; font-size: 34px;" onclick="location.href='{% url 'account_logout' %}'">Log Out</button>
+    </div>
+    <div class="profile-stats">
+        <div class="stat">
+            <span class="stat-label" style="font-family: 'Sunshiney'; font-size: 34px;">Health:</span>
+            <span class="stat-value" style="font-family: 'Sunshiney'; font-size: 34px;" >100</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label" style="font-family: 'Sunshiney'; font-size: 34px;">Money:</span>
+            <span class="stat-value" style="font-family: 'Sunshiney'; font-size: 34px;">0</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label" style="font-family: 'Sunshiney'; font-size: 34px;">Level:</span>
+            <span class="stat-value" style="font-family: 'Sunshiney'; font-size: 34px;">1</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label" style="font-family: 'Sunshiney'; font-size: 34px;">Rating:</span>
+            <span class="stat-value" style="font-family: 'Sunshiney'; font-size: 34px;">1</span>
+        </div>
+    </div>
+</div>
+<script>
+    const CookiesStorage = {
+        getCookies() {
+            const cookies = document.cookie
+                .split('; ')
+                .map((cookString) => cookString.split('='));
+            let data = {};
+            cookies.forEach((cookie) => {
+                data = {...data, ...{[cookie[0]]: cookie[1]}};
+            });
+
+            return data;
+        },
+
+        getItem(cookieName) {
+            const data = this.getCookies();
+            return data[cookieName];
+        }
+    }
+
+    const deleteAsync = async (url) => {
+        return await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': CookiesStorage.getItem("csrftoken")
+            },
+
+        })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+    }
+
+
+    const tasks = document.querySelectorAll('#task');
+
+    tasks.forEach(elem => {
+        const edit = elem.querySelector('#edit')
+        const title = elem.querySelector('#title')
+
+        const id = elem.querySelector('input[name="id"]').value
+
+
+        edit.addEventListener('click', () => {
+            title.classList.toggle('hide')
+
+            const changeInput = elem.querySelector('#changeInput')
+            if (changeInput) {
+                changeInput.remove()
+            } else {
+                elem.insertAdjacentHTML('afterbegin', `
+                    <input type="text" name="title" id="changeInput" class="add-field__text edit-input" value="${title.textContent}" />
+                `)
+                const insertedInput = elem.querySelector('#changeInput')
+
+                insertedInput?.focus()
+                insertedInput.selectionStart = insertedInput.value.length
+            }
+        })
+
+        const del = elem.querySelector('#delete')
+
+        del.addEventListener('click', async () => {
+            await deleteAsync(`/tasks/${id}/`, ).then(() => {
+                window.location.href = '/'
+            })
+        })
+    })
+</script>
+{% endblock content %}

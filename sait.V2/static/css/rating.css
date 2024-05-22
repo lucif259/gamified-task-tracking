@@ -1,0 +1,82 @@
+    .section--rating {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .section--rating h1 {
+        text-align: center;
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .rating-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .rating-table th, .rating-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .rating-table thead {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .rating-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .rating-table tbody tr:hover {
+        background-color: #ddd;
+    }
+
+    .rating-table th {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+    }
+
+    .rating-table td {
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .rating-table th, .rating-table td {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .rating-table thead {
+            display: none;
+        }
+
+        .rating-table tbody tr {
+            margin-bottom: 15px;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .rating-table tbody tr td {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: none;
+        }
+
+        .rating-table tbody tr td::before {
+            content: attr(data-label);
+            flex-basis: 50%;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
