@@ -11,8 +11,21 @@
 
 {% block content %}
 <section class="section section--auth" style="background-image: url('{% static 'images/dialog.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-    <div class="button-submit" id="Watch" onclick="location.href='{% url 'home' %}';">Watch</div>
+    <div class="button-submit" id="Watch" onclick="location.href='{% url 'create_task' %}'" bis_skin_checked="1">Watch</div>
     <div class="button-submit2" id="Go back" onclick="location.href='{% url 'street' %}';">Go back</div>
+    <div class="button-submit" id="createTaskButton">Watch</div>
 </section>
 {% endblock content %}
 
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tasking</h1>
+    <button id="view-tasks-button">View Tasks</button>
+    <ul id="task-list"></ul>
+{% endblock %}
+
+{% block content %}
+  <h1>Tasks</h1>
+  <ul>
+{% endblock %}

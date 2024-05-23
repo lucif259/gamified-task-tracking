@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/shopi.css' %}">
+{% endblock css %}
+
+{% block content %}
+<section class="background-image" style="background-image: url('{% static 'images/shopifon.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <img src="{% static 'images/GetBack.png' %}" alt="shop" class="overlay-image4" onclick="location.href='street';" style="position: fixed";>
+    <img src="{% static 'images/blockshop.png' %}" alt="shop" class="overlay-image2"> 
+    <img src="{% static 'images/shopiblock.png' %}" alt="shop" class="overlay-image3">
+    
+    <div class="profile-header">
+</section>
+{% endblock content %}

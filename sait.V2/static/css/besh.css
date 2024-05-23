@@ -127,4 +127,21 @@
     font-family: "Sunshiney", cursive;
     z-index: 2;
 }
-
+.profile-header {
+    position: fixed;
+    left: 90%;
+    top: 5%;
+}
+.profile-avatar {
+    position: fixed;
+    top: 6%;
+    left: 88.3%;
+}
+.profile-name {
+    position: fixed;
+    top: 2.7%;
+    left: 91%;
+    font-size: 23px;
+    font-style: normal;
+    font-family: "Sunshiney", cursive;
+}

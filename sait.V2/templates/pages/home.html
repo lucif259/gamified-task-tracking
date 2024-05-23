@@ -12,7 +12,7 @@
 <div class="profile-container">
     <div class="profile-header">
         <img src="{% static 'images/' %}{{ user.profile_image }}" alt="Player Avatar" class="profile-avatar">
-        <h1 class="profile-name">Player name</h1>
+        <h1 class="profile-name">{{ user.username }}</h1>
         <button class="logout-button"style="font-family: 'Sunshiney'; font-size: 34px;" onclick="location.href='{% url 'account_logout' %}'">Log Out</button>
     </div>
     <div class="profile-stats">
@@ -32,6 +32,7 @@
             <span class="stat-label" style="font-family: 'Sunshiney'; font-size: 34px;">Rating:</span>
             <span class="stat-value" style="font-family: 'Sunshiney'; font-size: 34px;">1</span>
         </div>
+        <div class="button-submit" id="Watch" onclick="location.href='{% url 'create_task' %}'" bis_skin_checked="1">Watch</div>
     </div>
 </div>
 <script>
