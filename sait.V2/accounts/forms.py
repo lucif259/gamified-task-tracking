@@ -4,6 +4,7 @@ from allauth.account.forms import SignupForm
 from .models import CustomUser
 from django import forms
 from .models import Profile
+from .models import Task
 
 class ProfileImageSelectForm(forms.ModelForm):
         class Meta:
@@ -27,3 +28,8 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('username', )
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description']

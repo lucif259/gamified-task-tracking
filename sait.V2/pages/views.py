@@ -6,22 +6,14 @@ from django.utils.decorators import method_decorator
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import CustomUser
-from django.contrib.auth.decorators import login_required
-from pages.models import Task
-from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from accounts.models import Task
+from accounts.forms import TaskForm
 
 @method_decorator(login_required, name='dispatch')
 class HomePageView(ListView):
     model = Task
     context_object_name = 'tasks'
     template_name = "pages/home.html"
-
-    def get_queryset(self):
-        user_id = self.request.user.id
-        tasks = super().get_queryset().filter(user_id=user_id, is_complete=False).order_by('-id')
-        return tasks
-
 
     def post(self, request, *args, **kwargs):
         if request.POST['target'] == 'create':
@@ -70,35 +62,20 @@ def shopi(request):
 
     return render(request, 'pages/shopi.html')
 
-@login_required
 def create_task(request):
     if request.method == 'POST':
-        # Логика создания задачи
-        task = Task.objects.create(title=request.POST['title'], description=request.POST['description'])
-        task.save()
-        return redirect('task_list')
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')  # Предположим, что у вас есть URL-адрес для списка задач
     else:
-        return render(request, 'pages/create_task.html')
+        form = TaskForm()
+    return render(request, 'pages/create_task.html', {'form': form})
+
+def completed_tasks(request):
+    completed_tasks = Task.objects.filter(is_complete=True)
+    return render(request, 'pages/completed_tasks.html', {'completed_tasks': completed_tasks})
 
 def task_list(request):
     tasks = Task.objects.all()
-    return render(request, 'task_list.html', {'tasks': tasks})
-
-def edit_task(request, task_id):
-    task = get_object_or_404(Task, pk=task_id)
-    if request.method == 'GET':
-        # Обработка запроса на получение данных о задаче для редактирования
-        data = {
-            'task_id': task.id,
-            'title': task.title,
-            'description': task.description,
-        }
-        return JsonResponse(data)
-    elif request.method == 'POST':
-        # Обработка запроса на обновление задачи
-        task.title = request.POST.get('title')
-        task.description = request.POST.get('description')
-        task.save()
-        return JsonResponse({'success': True})
-
-
+    return render(request, 'pages/task_list.html', {'tasks': tasks})

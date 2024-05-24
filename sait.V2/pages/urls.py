@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import HomePageView, delete_task, profile_image_select, street, shop, tasking, CentralStreet, rating, shopi, create_task, task_list
-from . import views
+from .views import HomePageView, delete_task, profile_image_select, street, shop, tasking, CentralStreet, rating, shopi, create_task, completed_tasks, task_list
+
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
@@ -13,9 +13,8 @@ urlpatterns = [
     path('CentralStreet', CentralStreet, name="CentralStreet"),
     path('rating', rating, name='rating'),
     path('home', HomePageView.as_view(), name="home"),
-    path('create_task', create_task, name='create_task'),
-    path('tasks', task_list, name='task_list'),
-    path('edit_task/<int:task_id>/', views.edit_task, name='edit_task'),
-path('tasks/', views.task_list, name='task_list'),
-    path('shopi', shopi, name="shopi")
+    path('shopi', shopi, name="shopi"),
+    path('create_task', create_task, name="create_task"),
+    path('completed_tasks/', completed_tasks, name='completed_tasks'),
+    path('task_list/', task_list, name='task_list'),
 ]

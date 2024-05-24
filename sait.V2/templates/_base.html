@@ -35,6 +35,11 @@
 <body>
 
 
+{% block content %}
+
+{% endblock content %}
+
+
 
 
 {% block javascript %}
@@ -48,30 +53,5 @@
 
 {% endblock javascript %}
 
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Website</title>
-</head>
-<body>
-    <header>
-        <h1>My Website</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/tasks/">Tasks</a></li>
-        </ul>
-    </nav>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer>
-        <p>&copy; 2022 My Website</p>
-    </footer>
 </body>
 </html>
