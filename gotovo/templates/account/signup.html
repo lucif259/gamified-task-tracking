@@ -1,0 +1,84 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock css %}
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+    <section class="section section--auth" style="background-image: url('{% static 'images/mainfon.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <img src="{% static 'images/Window Reg.png' %}" alt="Window Reg" class="overlay-image">
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+
+
+            <h2 class="form-title">Register</h2>
+
+
+            <div class="field">
+                <label class="label">Придумайте имя пользователя</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="error">{{ form.username.errors }}</p>
+                {% endif %}
+            </div>
+
+
+            <div class="field">
+                <label class="label">Придумайте надёжный пароль</label>
+
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <p class="error">{{ form.password1.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+
+                <label class="label">Повторите введённый пароль</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="error">{{ form.password2.errors }}</p>
+                {% endif %}
+            </div>
+
+
+            <div class="field">
+
+                <div class="label">Картинка профиля</div>
+
+                <div class="avatars">
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero1.png" checked>
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero1.png' %}')">
+                        </div>
+                    </label>
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero2.png">
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero2.png' %}')">
+                        </div>
+                    </label>
+                    <label class="avatar">
+                        <input type="radio" name="profile_image" value="hero3.png">
+
+                        <div class="avatar-label" style="background-image: url('{% static 'images/hero3.png' %}')">
+                        </div>
+                    </label>
+                </div>
+
+                {% if form.profile_image.errors %}
+                    <p class="error">{{ form.profile_image.errors }}</p>
+                {% endif %}
+            </div>
+
+
+
+
+            <button class="button-submit" type="submit">Зарегистрироваться</button>
+        </form>
+    </section>
+
+{% endblock content %}

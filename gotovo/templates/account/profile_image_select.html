@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile_image_select.css' %}">
+{% endblock css %}
+{% load crispy_forms_tags %}
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+<section class="section section--auth" style="background-image: url('{% static 'images/mainfon.png' %}')">
+    <form method="post" class="profile-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Продолжить</button> 
+        <a class="signup" href="{% url 'account_signup' %}">Регистрация</a>
+    </form>
+    <div class="profile-images">
+        <label>
+            <input type="radio" name="profile_image" value="hero1" {% if form.initial.profile_image == "hero1" %}checked{% endif %}>
+            <img src="{% static 'images/hero1.png' %}" alt="Hero 1">
+            
+        </label>
+        <label>
+            <input type="radio" name="profile_image" value="hero2" {% if form.initial.profile_image == "hero2" %}checked{% endif %}>
+            <img src="{% static 'images/hero2.png' %}" alt="Hero 2">
+        </label>
+        <label>
+            <input type="radio" name="profile_image" value="hero3" {% if form.initial.profile_image == "hero3" %}checked{% endif %}>
+            <img src="{% static 'images/hero3.png' %}" alt="Hero 3">
+        </label>
+    </div>
+</section>
+{% endblock content %}

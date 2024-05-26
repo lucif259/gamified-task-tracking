@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/completed_tasks.css' %}">
+</head>
+<body>
+    <h1>Completed Tasks</h1>
+<form id="completedTaskForm" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="response" id="Privet" style="display: block;">
+        <!-- Ответ для задачи с id=1 -->
+        <!-- Ваш HTML-код для отображения ответа -->
+    </div>
+
+    <div class="response" id="POkla" style="display: block;">
+        <!-- Ответ для задачи с id=2 -->
+        <!-- Ваш HTML-код для отображения ответа -->
+    </div>
+
+    <!-- Добавьте блоки с ответами для других задач по аналогии -->
+    
+    <button type="submit">Сохранить</button> <!-- Кнопка "Сохранить" -->
+</form>
+<script>
+    // Функция для обработки изменений в поле выбора задачи
+    function updateResponse() {
+        // Получаем выбранную задачу
+        var selectedTask = document.getElementById("id_task").value;
+
+        // Получаем соответствующий ответ
+        var response = document.getElementById("response-" + selectedTask);
+
+        // Скрываем все блоки с ответами
+        var allResponses = document.getElementsByClassName("response");
+        for (var i = 0; i < allResponses.length; i++) {
+            allResponses[i].style.display = "none";
+        }
+
+        // Показываем блок с выбранным ответом
+        if (response) {
+            response.style.display = "block";
+        }
+    }
+
+    // Вызываем функцию updateResponse() для обновления ответа при загрузке страницы
+    window.onload = updateResponse;
+
+    // Вызываем функцию updateResponse() при изменении выбранной задачи
+    document.getElementById("id_task").addEventListener("change", updateResponse);
+</script>
+</body>
+</html>

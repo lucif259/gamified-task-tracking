@@ -1,0 +1,90 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/task_list.css' %}">
+{% endblock css %}
+
+{% block title %}Список выполненных задач{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <span>{{ task.title }}</span>
+                <button class="view-task-button" data-task-id="{{ task.id }}">Посмотреть</button>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Модальное окно для отображения описания задачи и формы ответа -->
+<div id="taskModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="taskTitle"></h2>
+    <p id="taskDescription"></p>
+    <form id="completedTaskForm" action="{% url 'completed_tasks' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="task_id" id="taskIdInput">
+        <textarea name="response" placeholder="Введите ответ"></textarea>
+        <button type="submit" id="completeTaskButton">Выполнить</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    // Получение ссылок на элементы модального окна
+    var modal = document.getElementById('taskModal');
+    var span = document.getElementsByClassName("close")[0];
+
+    // Обработчик клика на кнопке "Посмотреть"
+    var viewTaskButtons = document.getElementsByClassName("view-task-button");
+    for (var i = 0; i < viewTaskButtons.length; i++) {
+        viewTaskButtons[i].onclick = function() {
+            var taskId = this.getAttribute("data-task-id");
+            var taskTitle = document.getElementById("taskTitle");
+            var taskDescription = document.getElementById("taskDescription");
+            var taskIdInput = document.getElementById("taskIdInput");
+
+            // Установка значений полей модального окна
+            taskTitle.innerHTML = this.previousElementSibling.innerHTML; // Предполагается, что заголовок задачи находится перед кнопкой
+            taskDescription.innerHTML = "Description of Task " + taskId; // Нужно заменить на реальное описание задачи
+            taskIdInput.value = taskId;
+
+            // Открытие модального окна
+            modal.style.display = "block";
+        }
+    }
+
+    // Обработчик клика на кнопке "Выполнить"
+    var completeTaskButton = document.getElementById("completeTaskButton");
+    completeTaskButton.onclick = function() {
+        var taskIdInput = document.getElementById("taskIdInput");
+        var responseTextarea = document.getElementById("response");
+        var response = responseTextarea.value;
+
+        // Отправка формы на сервер для обработки
+        var form = document.getElementById("completedTaskForm");
+        form.action = "{% url 'completed_tasks' %}?task_id=" + taskIdInput.value + "&response=" + encodeURIComponent(response);
+        form.submit();
+
+        // Закрытие модального окна
+        modal.style.display = "none";
+    }
+
+    // Закрытие модального окна при клике на крестик
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Закрытие модального окна при клике вне его области
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endblock content %}

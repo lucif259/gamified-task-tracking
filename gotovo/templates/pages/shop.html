@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load static %}
+
+ {% block css %}
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    {% endblock css %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<section class="section section--auth" style="background-image: url('{% static 'images/shopdialog.png' %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <div class="button-submit" id="Watch" onclick="location.href='{% url 'shopi' %}';">Watch</div>
+    <div class="button-submit2" id="Go back" onclick="location.href='{% url 'street' %}';">Go back</div>
+</section>
+{% endblock content %}
+

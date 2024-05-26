@@ -1,0 +1,66 @@
+/* Общий стиль для формы */
+/* Стиль для body, устанавливающий задний фон */
+body {
+    background-color: #E6CDA5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Это зафиксирует задний фон, чтобы он не прокручивался вместе с содержимым страницы */
+    color: #333; /* Цвет текста, чтобы он был видимым на фоне */
+    font-family: 'Sunshiney', cursive;
+    font-size: 26px;
+}
+
+form {
+    position: fixed;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    color: black;
+    font-size: 40px;
+    font-style: normal;
+    font-family: "Sunshiney", cursive;
+    background-color: #324142;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Стиль для заголовка формы */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Стиль для каждого поля ввода */
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Стиль для кнопки отправки формы */
+input[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Стиль для надписи "Введите ответ" в поле textarea */
+textarea::placeholder {
+    color: #999;
+}
